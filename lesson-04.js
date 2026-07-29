@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Lesson 04 exercise: Operators and conditionals
 // In your exercise repository, create a branch named `lesson-04-exercise` and switch to it,
@@ -12,29 +12,76 @@
 // misses, leaving both the prediction and the actual result visible.
 
 // * The provided expressions, write your prediction beside each before running:
-console.log(3 === "3"); // prediction:
-console.log(3 == "3"); // prediction:
-console.log("5" - 1); // prediction:
-console.log("5" + 1); // prediction:
-console.log(1 + true); // prediction:
-console.log(10 >= 10); // prediction:
-console.log(!(5 > 2)); // prediction:
-console.log(4 !== "4"); // prediction:
-console.log("b" > "a"); // prediction:
-console.log(0 === -0); // prediction:
-
+console.log(3 === "3"); // prediction:false
+console.log(3 == "3"); // prediction:true
+console.log("5" - 1); // prediction:4
+console.log("5" + 1); // prediction:"51"
+console.log(1 + true); // prediction:2
+console.log(10 >= 10); // prediction:true
+console.log(!(5 > 2)); // prediction:false
+console.log(4 !== "4"); // prediction:true
+console.log("b" > "a"); // prediction:true
+console.log(0 === -0); // prediction: true
 
 // TODO: Part two.
 // Write one `if` statement with an `else` branch on a variable of your choosing. Run the file
 // twice with different values so that each branch has printed at least once, and record each
 // run's output in a comment.
+const age = 2;
+if (age >= 18) {
+  console.log("You are an adult.");
+} else {
+  console.log("You are a minor.");
+}
 
+// PS C:\Users\mawul\music\startupistan-practice\JS> node lesson-04.js
+// false
+// true
+// 4
+// 51
+// 2
+// true
+// false
+// true
+// true
+// true
+// You are an adult.
+// Open 8:00 to 12:00
+// Welcome in
+// Medium
+// Large
+// PS C:\Users\mawul\music\startupistan-practice\JS> node lesson-04.js
+// false
+// true
+// 4
+// 51
+// 2
+// true
+// false
+// true
+// true
+// true
+// You are a minor.
+// Open 8:00 to 12:00
+// Welcome in
+// Medium
+// Large
+// PS C:\Users\mawul\music\startupistan-practice\JS>
 
 // TODO: Part three.
 // Build an `else if` chain for order pricing: more than 12 items produces one message, more
 // than 6 another, and everything else a third. Run it with values that reach every branch, and
 // add a comment explaining why the most specific question must be asked first.
+let itemCount = 7;
+if (itemCount > 12) {
+  console.log("You get a bulk discount!");
+} else if (itemCount > 6) {
+  console.log("You get a small discount.");
+} else {
+  console.log("No discount for you.");
+}
 
+// The most specific question must be asked first because if we ask the more general question first, it will catch all cases that are greater than 6, including those that are greater than 12, and we will never reach the more specific case. Therefore, we need to check for the highest threshold first to ensure that we apply the correct discount.
 
 // TODO: Part four.
 // For each of the eight provided values, which include `0`, `"0"`, an empty string, and a
@@ -43,24 +90,34 @@ console.log(0 === -0); // prediction:
 
 // * The eight provided values:
 const courtValues = [false, 0, "0", "", " ", "bread", null, undefined];
-
+console.log(Boolean(courtValues[0])); // prediction:false
+console.log(Boolean(courtValues[1])); // prediction:false
+console.log(Boolean(courtValues[2])); // prediction:true
+console.log(Boolean(courtValues[3])); // prediction:false
+console.log(Boolean(courtValues[4])); // prediction:true
+console.log(Boolean(courtValues[5])); // prediction:true
+console.log(Boolean(courtValues[6])); // prediction:false
+console.log(Boolean(courtValues[7])); // prediction:false
 
 // TODO: Part five.
 // Rewrite the provided day-based `if` chain as a `switch` statement with a `default` case and
 // a `break` in every case, and confirm that it prints the same answers for three test days.
 
 // * The provided day-based if chain, rewrite it as a switch beneath it:
-const day = "Sunday";
-if (day === "Saturday") {
-  console.log("Open 7:00 to 14:00");
-} else if (day === "Sunday") {
-  console.log("Open 8:00 to 12:00");
-} else if (day === "Monday") {
-  console.log("Closed today");
-} else {
-  console.log("Open 7:00 to 18:00");
+const day = "Monday";
+switch (day) {
+  case "Saturday":
+    console.log("Open 7:00 to 14:00");
+    break;
+  case "Sunday":
+    console.log("Open 8:00 to 12:00");
+    break;
+  case "Monday":
+    console.log("Closed today");
+    break;
+  default:
+    console.log("Open 7:00 to 18:00");
 }
-
 
 // TODO: Part six.
 // The file ends with a short broken program that contains an assignment where a comparison was
@@ -69,22 +126,26 @@ if (day === "Saturday") {
 
 // * The provided broken program, run it, observe both incorrect behaviors, then repair both:
 let shopStatus = "closed";
-if (shopStatus = "open") {
+if (shopStatus === "open") {
   console.log("Welcome in");
+} else {
+  console.log("Sorry, we're closed"); //it was missing an else statement and the comparison operator was wrong, it was using assignment operator instead of comparison operator
 }
 const size = "M";
 switch (size) {
   case "S":
     console.log("Small");
+    break;
   case "M":
     console.log("Medium");
+    break;
   case "L":
     console.log("Large");
     break;
   default:
     console.log("Unknown size");
+    break;
 }
-
 
 // TODO: Part seven.
 // Two classic exercises close the lesson. First, the leap year checker: a year is a leap year
@@ -93,7 +154,23 @@ switch (size) {
 // 2000. Second, FizzBuzz for a single number: for one number variable, print Fizz when it is
 // divisible by 3, Buzz when it is divisible by 5, FizzBuzz when it is divisible by both, and
 // the number itself otherwise. The loops lesson scales this to one hundred.
+const year = 2024;
+if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+  console.log(`${year} is a leap year.`);
+} else {
+  console.log(`${year} is not a leap year.`);
+}
 
+const number = 15;
+if (number % 3 === 0 && number % 5 === 0) {
+  console.log("FizzBuzz");
+} else if (number % 3 === 0) {
+  console.log("Fizz");
+} else if (number % 5 === 0) {
+  console.log("Buzz");
+} else {
+  console.log(number);
+}
 
 // TODO: Save deliberately, commit with a clear message, push the branch, and open a pull request
 // into main.
