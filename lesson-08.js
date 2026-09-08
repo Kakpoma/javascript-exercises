@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Lesson 08 exercise: Classes
 // In your exercise repository, create a branch named `lesson-08-exercise` and switch to it,
@@ -9,7 +9,6 @@
 // Write an `Artist` class with a constructor that receives a name, a genre, and a total
 // runtime, and a `describe` method that returns one sentence built from the instance's own
 // properties through `this`. Create two instances with `new` and log both descriptions.
-
 
 // TODO: Part two.
 // The file provides the artists as an array of plain objects. Loop over it with `for...of`,
@@ -24,7 +23,6 @@ const artistData = [
   { name: "Miyagi and Andy Panda", genre: "Hip-hop", total: "16:21" },
   { name: "Johnny Cash", genre: "Country", total: "15:40" },
 ];
-
 
 // TODO: Part three.
 // The file contains three short snippets: a class call that is missing `new`, an arrow
@@ -41,12 +39,10 @@ const artistData = [
 // * Snippet three, the correct call. Uncomment after part one:
 // console.log(new Artist("Asake", "Afrobeats", "14:08").describe());
 
-
 // TODO: Part four.
 // Write a `FeaturedArtist` class that extends `Artist`, adds a blurb property through a
 // constructor that calls `super` first, and overrides `describe` so that it builds on the
 // superclass version through `super.describe()`. Promote one artist and log the result.
-
 
 // TODO: Part five.
 // The file ends with a constructor function and two prototype method assignments, working code
@@ -66,13 +62,11 @@ ArtistOld.prototype.tag = function () {
   return `#${this.genre.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")}`;
 };
 
-
 // TODO: Part six.
 // As a stretch, add a static method `Artist.named` that receives an array of instances and a
 // name and returns the matching instance using `find`, and log the description of the instance
 // it returns. The `get` keyword from the extension is your alternative if getters caught your
 // interest.
-
 
 // TODO: Save deliberately, commit with a clear message, push the branch, and open a pull request
 // into main.
